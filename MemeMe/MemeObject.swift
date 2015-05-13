@@ -17,6 +17,7 @@ struct MemeObject {
     var originalImage: UIImage?
     var memedImage: UIImage?
     
+    // convenience method that returns the array in appDelegate
     static func sharedMemes() -> [MemeObject] {
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate

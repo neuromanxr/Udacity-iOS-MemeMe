@@ -84,7 +84,8 @@ class MemesTableViewController: UITableViewController {
         // push detail view controller for selected meme
         var meme = MemeObject.sharedMemes()[indexPath.row] as MemeObject
         let memeDetailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetail") as! MemeDetailViewController
-
+        
+        // pass the selected indexPath to detail view controller
         memeDetailViewController.memeObjectIndex = indexPath.row
         
         self.navigationController?.pushViewController(memeDetailViewController, animated: true)
