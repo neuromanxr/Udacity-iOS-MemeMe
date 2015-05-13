@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemesEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var toolbar: UIToolbar!
     
@@ -38,8 +38,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        // if the camera is available, enable the camera button
         self.cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
+        // enable share button only when image is present
         if self.imagePickerView.image == nil {
             NSLog("image picker image is nil")
             self.shareButton.enabled = false
@@ -48,14 +50,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.shareButton.enabled = true
         }
         
+        // hide tabbar when editor is presented
         self.tabBarController?.tabBar.hidden = true
         
+        // for moving the keyboard
         self.subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
+        // show tabbar when editor dismissed
         self.tabBarController?.tabBar.hidden = false
         
         self.unsubscribeFromKeyboardNotification()
@@ -69,7 +74,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func saveMeme() {
         
         // create the meme
-        var meme = MemeObject(topText: self.defaultTextField.text, bottomText: self.textField.text, image: self.imagePickerView.image!, memedImage: self.memedImage!)
+        var meme = MemeObject()
+        meme.topText = self.defaultTextField.text
+        meme.bottomText = self.textField.text
+        meme.originalImage = self.imagePickerView.image!
+        meme.memedImage = self.memedImage!
         
         // add to memes array in app delegate
         let object = UIApplication.sharedApplication().delegate
@@ -101,8 +110,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func setupTextAttributes() {
+        // text attributes for meme text
         let memeTextAttributes = [NSStrokeColorAttributeName:UIColor.blackColor(), NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!, NSStrokeWidthAttributeName:-3.0]
         
+        // center and always capitalize
         self.defaultTextField.defaultTextAttributes = memeTextAttributes
         self.defaultTextField.autocapitalizationType = UITextAutocapitalizationType.AllCharacters
         self.defaultTextField.textAlignment = NSTextAlignment.Center
@@ -114,6 +125,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBAction func pickAnImage(sender: UIBarButtonItem) {
         
+        // show image picker library
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
@@ -122,6 +134,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func pickAnImageFromCamera(sender: UIBarButtonItem) {
         
+        // show camera photos if available
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         
@@ -133,6 +146,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func activityCompletionWithItemsHandler(activity: String!, completed: Bool, items: [AnyObject]!, error: NSError!) {
+        // save meme and dismiss the activity view
         if completed {
             self.saveMeme()
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -141,6 +155,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBAction func shareMeme(sender: UIBarButtonItem) {
         
+        // show alert if meme text fields empty
         if self.textField.text.isEmpty || self.defaultTextField.text.isEmpty {
             self.showMemeIsEmptyAlert()
         } else {
@@ -155,6 +170,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func showMemeIsEmptyAlert() {
+        // alert for empty meme text
         let alertController = UIAlertController(title: "Warning", message: "You didn't enter a meme!", preferredStyle: UIAlertControllerStyle.Alert)
         let alertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) { (alert) -> Void in
             NSLog("There's no meme")
@@ -166,6 +182,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         NSLog("Image Picked %@", image)
         
+        // scale image to fill screen
         self.imagePickerView.contentMode = UIViewContentMode.ScaleAspectFill
         self.imagePickerView.image = image;
         
@@ -177,6 +194,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func keyboardWillShow(notification: NSNotification) {
+        
+        // move view up when keyboard is present and hide the toolbar
         NSLog("Show keyboard height %f", getKeyboardHeight(notification))
         if self.textField.isFirstResponder() {
             self.view.frame.origin.y -= getKeyboardHeight(notification)
@@ -185,6 +204,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func keyboardWillHide(notification: NSNotification) {
+        
+        // return view to original position
         NSLog("Hide keyboard height %f", getKeyboardHeight(notification))
         if self.textField.isFirstResponder() {
             self.view.frame.origin.y += getKeyboardHeight(notification)
@@ -193,6 +214,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func getKeyboardHeight(notifcation: NSNotification) -> CGFloat {
+        
+        // get the keyboard height
         let userInfo = notifcation.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         

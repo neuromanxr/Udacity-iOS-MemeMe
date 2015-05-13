@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Yaj-4l-7Nf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -16,19 +17,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="bRQ-0s-lXJ" kind="relationship" relationship="viewControllers" id="fzd-qa-9f2"/>
-                        <segue destination="kYO-8n-J52" kind="relationship" relationship="viewControllers" id="Q4u-sy-3sh"/>
+                        <segue destination="bRQ-0s-lXJ" kind="relationship" relationship="viewControllers" id="YW0-Yn-sef"/>
+                        <segue destination="kYO-8n-J52" kind="relationship" relationship="viewControllers" id="w56-RK-qd7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za3-e6-vg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1591.5" y="750"/>
         </scene>
-        <!--List-->
+        <!--Grid-->
         <scene sceneID="yXG-50-Tnr">
             <objects>
                 <navigationController id="kYO-8n-J52" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="TzW-GO-ru5"/>
+                    <tabBarItem key="tabBarItem" title="Grid" id="TzW-GO-ru5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xTT-oe-LK2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -46,6 +47,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="MemesGrid" id="p68-7C-H92" customClass="MemesCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="j5G-iJ-ie6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RrN-6X-8Cl">
@@ -126,11 +128,11 @@
             </objects>
             <point key="canvasLocation" x="279" y="1248.75"/>
         </scene>
-        <!--Editor-->
+        <!--List-->
         <scene sceneID="9qi-5e-S6d">
             <objects>
                 <navigationController id="bRQ-0s-lXJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Editor" id="e4P-7h-JYz"/>
+                    <tabBarItem key="tabBarItem" title="List" id="e4P-7h-JYz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DBH-BG-GAW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -148,6 +150,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="MemesTable" id="efk-en-5Jp" customClass="MemesTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="2OM-xg-r4w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -229,15 +232,15 @@
                                             <exclude reference="cmx-aR-JaE"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="U2G-by-lg1"/>
-                                            <exclude reference="ZDf-sL-wXB"/>
-                                            <exclude reference="ZTA-z7-Q1f"/>
                                             <exclude reference="FqZ-MH-oQr"/>
                                             <exclude reference="S6v-gs-5PT"/>
                                             <exclude reference="lnP-Vf-FVs"/>
                                             <exclude reference="M6L-Ye-9mt"/>
                                             <exclude reference="Tr5-ia-Eya"/>
                                             <exclude reference="g52-Fd-PMz"/>
+                                            <exclude reference="U2G-by-lg1"/>
+                                            <exclude reference="ZDf-sL-wXB"/>
+                                            <exclude reference="ZTA-z7-Q1f"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=compact">
@@ -247,15 +250,15 @@
                                             <include reference="cmx-aR-JaE"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="U2G-by-lg1"/>
-                                            <include reference="ZDf-sL-wXB"/>
-                                            <include reference="ZTA-z7-Q1f"/>
                                             <include reference="FqZ-MH-oQr"/>
                                             <include reference="S6v-gs-5PT"/>
                                             <include reference="lnP-Vf-FVs"/>
                                             <include reference="M6L-Ye-9mt"/>
                                             <include reference="Tr5-ia-Eya"/>
                                             <include reference="g52-Fd-PMz"/>
+                                            <include reference="U2G-by-lg1"/>
+                                            <include reference="ZDf-sL-wXB"/>
+                                            <include reference="ZTA-z7-Q1f"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -292,7 +295,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="90P-6E-jDh"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="4SO-pz-KkN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCP-Cw-H2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -302,7 +305,7 @@
         <!--Editor-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="MemeEditor" id="vXZ-lx-hvc" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditor" id="vXZ-lx-hvc" customClass="MemesEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -420,17 +423,17 @@
                                 <exclude reference="bPt-fS-HIQ"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Atj-Qw-44E"/>
-                                <exclude reference="ZoZ-vE-qkQ"/>
-                                <exclude reference="dGI-rV-9PO"/>
-                                <exclude reference="f1U-BJ-3AC"/>
-                                <exclude reference="gNI-kW-zF4"/>
+                                <exclude reference="TIK-qz-IOZ"/>
                                 <exclude reference="39j-Im-G1Z"/>
                                 <exclude reference="9kf-UO-mD6"/>
                                 <exclude reference="dD3-v6-pbP"/>
                                 <exclude reference="jyj-Me-kP4"/>
                                 <exclude reference="seO-SY-679"/>
-                                <exclude reference="TIK-qz-IOZ"/>
+                                <exclude reference="Atj-Qw-44E"/>
+                                <exclude reference="ZoZ-vE-qkQ"/>
+                                <exclude reference="dGI-rV-9PO"/>
+                                <exclude reference="f1U-BJ-3AC"/>
+                                <exclude reference="gNI-kW-zF4"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -441,24 +444,24 @@
                                 <include reference="bPt-fS-HIQ"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Atj-Qw-44E"/>
-                                <include reference="ZoZ-vE-qkQ"/>
-                                <include reference="dGI-rV-9PO"/>
-                                <include reference="f1U-BJ-3AC"/>
-                                <include reference="gNI-kW-zF4"/>
+                                <include reference="TIK-qz-IOZ"/>
                                 <include reference="39j-Im-G1Z"/>
                                 <include reference="9kf-UO-mD6"/>
                                 <include reference="dD3-v6-pbP"/>
                                 <include reference="jyj-Me-kP4"/>
                                 <include reference="seO-SY-679"/>
-                                <include reference="TIK-qz-IOZ"/>
+                                <include reference="Atj-Qw-44E"/>
+                                <include reference="ZoZ-vE-qkQ"/>
+                                <include reference="dGI-rV-9PO"/>
+                                <include reference="f1U-BJ-3AC"/>
+                                <include reference="gNI-kW-zF4"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Editor" id="88B-18-VvY">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="action" id="GPs-Ro-AEi">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="action" id="DLH-6t-krC">
                             <connections>
-                                <action selector="shareMeme:" destination="vXZ-lx-hvc" id="4GI-4U-2ab"/>
+                                <action selector="shareMeme:" destination="vXZ-lx-hvc" id="dtc-wC-1gi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -466,9 +469,9 @@
                         <outlet property="cameraButton" destination="eac-uD-RQK" id="sYl-RI-HkA"/>
                         <outlet property="defaultTextField" destination="x38-GH-w6P" id="MBG-wB-Pjo"/>
                         <outlet property="imagePickerView" destination="KKU-CC-Dhk" id="fC3-T2-HFL"/>
-                        <outlet property="shareButton" destination="GPs-Ro-AEi" id="bnp-Nz-ghc"/>
+                        <outlet property="shareButton" destination="DLH-6t-krC" id="xTJ-A0-oO9"/>
                         <outlet property="textField" destination="5kL-FE-p8f" id="yJG-zA-LSJ"/>
-                        <outlet property="toolbar" destination="bPt-fS-HIQ" id="Ltv-K9-zGR"/>
+                        <outlet property="toolbar" destination="bPt-fS-HIQ" id="b5P-Mo-u9x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -484,6 +487,7 @@
                         <viewControllerLayoutGuide type="bottom" id="xZ9-6Z-ZGG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G5o-HN-43i">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TyK-Ua-DNH">
@@ -502,10 +506,10 @@
                                 <exclude reference="TyK-Ua-DNH"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="NVZ-eP-uSF"/>
                                 <exclude reference="By4-yC-NZU"/>
                                 <exclude reference="IbL-hb-Vru"/>
                                 <exclude reference="m16-gf-HvB"/>
-                                <exclude reference="NVZ-eP-uSF"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -513,10 +517,10 @@
                                 <include reference="TyK-Ua-DNH"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="NVZ-eP-uSF"/>
                                 <include reference="By4-yC-NZU"/>
                                 <include reference="IbL-hb-Vru"/>
                                 <include reference="m16-gf-HvB"/>
-                                <include reference="NVZ-eP-uSF"/>
                             </mask>
                         </variation>
                     </view>
@@ -527,7 +531,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pfj-Q0-RA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1956" y="1477.5"/>
+            <point key="canvasLocation" x="1956" y="1658"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

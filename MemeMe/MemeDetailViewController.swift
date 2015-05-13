@@ -21,6 +21,7 @@ class MemeDetailViewController: UIViewController {
 
         self.navigationItem.title = "Detail"
         
+        // delete meme button
         let deleteButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Trash, target: self, action: "deleteMeme")
         self.navigationItem.rightBarButtonItem = deleteButton
         
@@ -54,15 +55,19 @@ class MemeDetailViewController: UIViewController {
     }
     
     func showDeleteAlert() {
+        
+        // warn user before deleting the meme
         let alertController = UIAlertController(title: "Delete", message: "Delete meme image?", preferredStyle: UIAlertControllerStyle.Alert)
         let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive) { (delete) -> Void in
             NSLog("Deleted meme")
             self.memedImageView.image = nil
             
+            // delete the meme
             let object = UIApplication.sharedApplication().delegate
             let appDelegate = object as! AppDelegate
             appDelegate.memes.removeAtIndex(self.memeObjectIndex!)
             
+            // then show the editor button
             let editorButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "showMemeEditor")
             self.navigationItem.rightBarButtonItem = editorButton
         }
@@ -81,19 +86,8 @@ class MemeDetailViewController: UIViewController {
     func showMemeEditor() {
         self.navigationController?.popViewControllerAnimated(true)
         
-        let memeEditorViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeEditor") as! ViewController
+        let memeEditorViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeEditor") as! MemesEditorViewController
         self.navigationController?.pushViewController(memeEditorViewController, animated: false)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

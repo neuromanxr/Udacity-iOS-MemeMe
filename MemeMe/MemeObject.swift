@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MemeObject: NSObject {
+struct MemeObject {
     
     var topText: String?
     var bottomText: String?
@@ -17,15 +17,7 @@ class MemeObject: NSObject {
     var originalImage: UIImage?
     var memedImage: UIImage?
     
-    init(topText: String!, bottomText: String!, image: UIImage, memedImage: UIImage) {
-        
-        self.topText = topText
-        self.bottomText = bottomText
-        self.originalImage = image
-        self.memedImage = memedImage
-    }
-    
-    class func sharedMemes() -> [MemeObject] {
+    static func sharedMemes() -> [MemeObject] {
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         
